@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,
+	maximum-scale=1.0,user-scalable=no">
+	<title>Our love .</title>
+	<style type="text/css">
+		html {
+			width: 100%;
+		}
+		pre {
+			text-align: center;
+			margin:0 auto;
+			width: 50%;
+			font-size: 50px;
+		}
+		body {
+			margin:0px;
+			width: 100%;
+			background-color: #eee;
+			background-image: url("image/back3.jpg");
+			background-size: 100% 100%;
+		}
+		#topArea {
+			width: 100%;
+		}
+		.topImageItem {
+			width: 100%;
+		}
+		.topImageItem img{
+			width: 100%;
+		}
+		#bottomArea {
+			width: 100%;
+		}
+		/*@keyframes fadeIn {
+			from{
+				opacity: 0;
+			},
+			to {
+				opacity: 1 ;
+			}
+		}*/
+	</style>
+</head>
+<body>
+	<div id="topArea">
+		<div class="topImageItem">
+			<!-- <img src="image/IMG_9120.JPG"> -->
+		</div>
+	</div>
+	<div id="bottomArea">
+		<pre>
+我
+们
+的
+故
+事
+即
+将
+启
+幕
+		</pre>
+	</div>
+	<audio src="music/demo1.mp3" autoplay="autoplay" loop="loop"></audio>
+	<script type="text/javascript">
+		function Item(text,url){
+			var isLoaded = false; //标识了该图片资源是否已经加载完毕
+			this.textValue = text;
+			this.imgEle = document.createElement("img") ;
+			this.imgEle.onload = function(){
+				console.log("aaa") ;
+				isLoaded = true ; //如若加载完毕那么将isLoaded标识设置为true
+			}
+			this.imgEle.src = url ;
+			this.getFlag = function(){
+				return isLoaded ;
+			}
+		}
+		//生成所有item对象的类数组
+		var items = {
+			length : 0 ,
+			push : Array.prototype.push 
+		} ;
+		var index = -1 ; //表示目前显示的item的索引 开始被设置为-1
+		var canNextItem = true ; //表示是否可以循环下一个item
+		var textIndex = 0 ; //表示显示的文字索引
+		var timer = 0 ;
+		var imageItem = document.getElementsByClassName("topImageItem")[0] ;
+		var img = imageItem.getElementsByTagName("img")[0] ;
+		var pre = document.getElementsByTagName("pre")[0] ;
+		var texts = {
+			length : 0 ,
+			push : Array.prototype.push
+		} ;
+		texts.push("这是一个神奇的地方，我认识了你。\n" + 
+			       "那时候的你，优雅朴素。\n" + 
+			       "全然没有一个研究生的傲气。\n" + 
+			       "至少...言语间没有...\n" + 
+			       "仿佛三年前就浮在眼前。\n" + 
+			       "只是那时，我们并不是此刻的我们...") ;
+		texts.push("似乎在余下的两年的时间里，\n" + 
+		           "我们并没有太多交集，\n" + 
+		           "除了隐隐约约能听见别人提及你。\n" + 
+		           "我迷茫着，走着一条无奈的路途。\n" + 
+		           "甚至感觉自己变了个人，\n" + 
+		           "从热情激昂到情绪低迷。\n" + 
+		           "我想我在这段时间变得成熟了，\n" + 
+		           "从一个稚嫩的男孩...") ;
+		texts.push("2018年3月10日，在这里。\n" + 
+			       "这里的海水无比清澈，似乎在昭示着\n" + 
+			       "让我也变得清净透明。\n" + 
+			       "你像一个孩子一样，哭得淋漓，\n" + 
+			       "我想这应该是你长期压抑情绪的释放。\n" + 
+			       "但我受不了女孩子哭，那一刻，\n" + 
+			       "你在我眼中姐姐的形象荡然无存，\n" + 
+			       "我傻呼呼的不会安慰人，\n" + 
+			       "只是尽量显得自己很搞笑，\n" + 
+			       "满口胡言的说着自己都听不懂的笑话，\n" + 
+			       "还故意拉开嘴皮，演示着自己内心的孤独。") ;
+		texts.push("从三亚回来不久，我一定要请你跟瑜吃饭，\n" + 
+			       "不知怎的，总想帮你做点什么。\n" + 
+				   "也许是人道主义情怀泛滥，总无法忍心\n" + 
+				   "你被没有适应过来的闺蜜的折磨。\n" + 
+				   "我想我能说服瑜，让你不那么痛苦了。\n" + 
+				   "但是在这里，一家叫羊排虾的餐厅。\n" + 
+				   "吃着...聊着...戏剧化的是，\n" + 
+				   "我反而被瑜说服了...\n" + 
+				   "居然隐隐约约开始相信...爱情...\n" + 
+				   "我都不敢相信...") ;
+		texts.push("2018年4月" + 
+				   "还记得你带着修远，子修，叔叔，\n" + 
+				   "让我聊。\n" + 
+			       "那天你真的很美，穿一身颜色素雅的裙子，\n" + 
+				   "算是你第一次利利索索地出现在我面前，\n" + 
+				   "而我，那天不知怎么了。\n" + 
+				   "坐在你旁边，就想凑近你。\n" + 
+				   "然后面对他们，没有正题。\n" + 
+				   "说了一堆好吃的和地方，\n" + 
+				   "我承认，\n" + 
+				   "你第一次吸引了我...\n") ;
+		texts.push("2018年5月13日" + 
+				   "如果说作为开车教练，谁最有耐心，\n" + 
+			       "我想应该是我了吧，几乎都是免费教。\n" + 
+				   "说实话，你学车真挺笨的，尤其是方向。\n" + 
+				   "而我，居然不会拒绝人...\n" + 
+				   "甚至从教练过渡成了某人的司机。\n" + 
+				   "去南宁那次，\n" + 
+				   "我第一次感觉开车真累...\n") ;
+		texts.push("2018年5月15日：" + 
+			       "你还记得《拾螺记》吗？\n" + 
+			       "那一次你说的差点气冲冲的离开，\n" + 
+				   "我承认怪我自己没有勇气，\n" + 
+				   "差点连跟你吃螺蛳粉的机会都没了，\n" + 
+				   "差点跟我亲爱的你插肩而过，\n" + 
+				   "螺蛳粉，应该算是我们之间一个\n" + 
+				   "难忘的记忆了吧。\n" + 
+				   "此刻我总默默祈祷，\n" + 
+				   "那一刻似乎有老天爷在帮我，\n" + 
+				   "帮我留住了你。") ;
+		texts.push("2018年5月18日：\n" + 
+			       "我带你来到我美丽的家乡，\n" + 
+				   "第一次感受老家的瀑布如此壮观，\n" + 
+				   "不知怎么了？\n" + 
+				   "那个时刻是我这几年来最开心的时刻。\n" + 
+				   "也许是风景，\n" + 
+				   "也许是家乡的水，\n" + 
+				   "也许是你，\n" + 
+				   "或者我又忽然悟到了什么...\n") ;
+		texts.push("瀑布是老家最美的景，\n" + 
+			       "听着你一阵的夸赞，\n" + 
+				   "我心中燃起了一股自豪感，\n" + 
+				   "而看见你满足的笑容，\n" + 
+				   "我心中更加高兴，\n" + 
+				   "那时候感觉到你弱弱的笑容，挺美...\n") ;
+		texts.push("2018年5月19日：\n" + 
+			       "我带着奶奶，奶奶领着你，\n" + 
+				   "我们一同去了昆明。\n" + 
+				   "看着你跟奶奶那么亲近。\n" + 
+				   "我甚至感觉你不是外人，\n" + 
+				   "我爱奶奶，因为奶奶小时候给我的爱颇多。\n" + 
+				   "那天我看见奶奶多年没有的笑容，" + 
+				   "我想，那是因为你，不然...") ;
+		texts.push("看着这张照片，\n" + 
+			       "我在想，\n" + 
+				   "是什么样的苦楚将奶奶的身躯\n" + 
+				   "变得如此瘦小。\n" + 
+				   "而我常年不在老人身边，\n" + 
+				   "心中不禁有些伤感，祝愿奶奶身体健康。\n" + 
+				   "你是个善良的姑娘，\n" + 
+				   "考虑得总比我细心...") ;
+		texts.push("2018年5月20日：\n" + 
+			       "我们游遍了昆明，\n" + 
+				   "最后驻足在了石林得一家小店，\n" + 
+				   "这个那个镇子虽然是农村，但是\n" + 
+				   "感觉更像一个小城，\n" + 
+				   "路灯可以照出我们得影子，\n" + 
+				   "我跟你之间再也没有了距离。\n" + 
+				   "这一天，我鼓起勇气做了一辈子最正确的决定。\n" + 
+				   "我向你表白了，很突然..." + 
+				   "而你有点不知所措...") ;
+		texts.push("亲爱的，原谅我那时的毫无准备的表白，\n" + 
+			       "甚至连鲜花都没有，\n" + 
+				   "至少，\n" + 
+				   "那一瞬间我鼓足了勇气，向你坦诚。\n" + 
+				   "那时的我，不渴望得到什么，只是不想错过，\n" + 
+				   "错过身边的你。\n" + 
+				   "你是个善良的姑娘，\n" + 
+				   "你是一个值得爱护的姑娘。") ;
+		texts.push("这是龙宫，\n" + 
+			       "原谅我无法用言语形容那时心中的喜悦。\n") ;
+		texts.push("这是花江大峡谷，\n" + 
+			       "可惜再也找不回跟了你十年的小白帽了...\n") ;
+		texts.push("这是你在厨房洗碗的场景，\n" + 
+			       "那时比现在黑多了...\n") ;
+		texts.push("这张照片真的很帅吗？\n" + 
+			       "我感觉青岩古镇的旅行，猪蹄更好吃吧...\n") ;
+		texts.push("2018年6月：\n" + 
+			       "你第一次带我来到南京，\n" + 
+				   "我来到了你的城市，\n" + 
+				   "那些花，\n" + 
+				   "那学校里的场景，\n" + 
+				   "我感受到了你曾经求学的路。") ;
+		texts.push("大名鼎鼎的夫子庙，\n" + 
+			       "夜景确实很美...") ;
+		texts.push("我第一次跟妈妈哥哥嫂子合影，\n" + 
+			       "旁边居然还有一只美丽的小兔子...\n" + 
+			       "太意外了...") ;
+		texts.push("兔子穿泳衣的样子，\n" + 
+			       "只觉身材极好..." + 
+			       "至于肤色嘛...不敢直言...") ;
+		texts.push("亲爱的，还记得你坐在地上煮火锅的样子吗？\n" + 
+			       "真的很性感..." + 
+			       "在这个小家里，我学会了很多。" + 
+			       "感谢亲爱的兔子。") ;
+		texts.push("2018年12月5日：\n" + 
+			       "我第一次化妆..." + 
+			       "我们去拍婚纱照。" + 
+			       "兔子真上镜。") ;
+
+		// 产生所有图片
+		for(var i=0;i<texts.length;i++){
+			var url = "image/image" + (0 + 1) + ".JPG" ;
+			items.push(new Item(texts[i],url)) ;
+		}
+		function nextItem(){
+			// if(index == items.length -1){
+			// 	clearInterval(timer) ;
+			// 	return;
+			// }
+			if(index + 1 < items.length && items[index + 1].getFlag() == true && canNextItem == true){
+				//表示下一个图片已经加载好了而且文字也显示完毕了
+				console.log("准备进入下一个item") ;
+				if(img != null){
+					img.remove() ;
+				}
+				imageItem.appendChild(items[++index].imgEle) ;
+				img = items[index].imgEle ;
+				canNextItem = false;
+				pre.innerText = "" ;
+				pre.style.fontSize = "15px" ;
+				pre.style.margin = "0" ;
+				textIndex = 0 ;
+			}
+			if(index != -1){
+				pre.innerText = items[index].textValue.substring(0,textIndex++) ;
+				// if(pre.innerText == items[index].textValue){
+				if(textIndex == items[index].textValue.length){
+					console.log("第" + index + "个item 放映结束了！") ;
+					canNextItem = true ;
+					if(index == items.length - 1){
+						//结束定时器
+						console.log("结束定时器") ;
+						clearInterval(timer) ;
+
+					}
+				}
+			}
+		}
+		setTimeout(function(){
+			timer = setInterval(nextItem,300) ;
+		},3000) ;
+	</script>
+</body>
+</html>
