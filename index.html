@@ -313,8 +313,8 @@
 				if(document.body.scrollHeight > ( window.innerHeight || document.documentElement.clientHeight)){
 					window.scrollBy(0,20) ;
 				}
-				// if(pre.innerText == items[index].textValue){
-				if(textIndex == items[index].textValue.length){
+				if(pre.innerText == items[index].textValue){
+				//if(textIndex == items[index].textValue.length){
 					console.log("第" + index + "个item 放映结束了！") ;
 					// canNextItem = true ;
 					if(index == items.length - 1 && canNextItem == true){
