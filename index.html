@@ -306,6 +306,9 @@
 			}
 			if(index != -1){
 				pre.innerText = items[index].textValue.substring(0,textIndex++) ;
+				if(document.body.scrollHeight > window.innerHeight){
+					window.scrollBy(0,20) ;
+				}
 				// if(pre.innerText == items[index].textValue){
 				if(textIndex == items[index].textValue.length){
 					console.log("第" + index + "个item 放映结束了！") ;
