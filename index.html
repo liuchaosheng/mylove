@@ -313,7 +313,7 @@
 				if(textIndex == items[index].textValue.length){
 					console.log("第" + index + "个item 放映结束了！") ;
 					// canNextItem = true ;
-					if(index == items.length - 1){
+					if(index == items.length - 1 && canNextItem == true){
 						//结束定时器
 						img.remove() ;
 						var str = "让\n我\n们\n一\n起\n续\n写\nour\nlove.." ;
